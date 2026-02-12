@@ -17,6 +17,7 @@ import matplotlib
 matplotlib.use("TkAgg")
 import matplotlib.pyplot as plt
 from collections import deque, namedtuple
+import argparse
 
 MEAN_REWARDS = 200
 plt.rcParams['figure.figsize'] = (16,8)
@@ -221,7 +222,7 @@ class DQN(object):
 	def soft_update(self):
 		for target_param, local_param in zip(self.Qtarget.parameters(), self.Q.parameters()):
 			target_param.data.copy_( self.tau*local_param.data + (1.0-self.tau)*target_param.data )
-            
+			
 	##########################################
 	# Executa um episódio do DQN
 	def runEpisode(self):
@@ -291,6 +292,36 @@ class DQN(object):
 		self.avg_rewards.append(np.mean(self.rewards[-MEAN_REWARDS:]))
 
 ########################################################################
+def parse_args():
+	parser = argparse.ArgumentParser(description="DQN Training Parameters")
+
+	parser.add_argument('--episodes', type=int, default=1000)
+	parser.add_argument('--gamma', type=float, default=0.99)
+	parser.add_argument('--eps', type=float, default=0.1)
+	parser.add_argument('--alpha', type=float, default=1.0e-3)
+	parser.add_argument('--batch_size', type=int, default=64)
+	parser.add_argument('--update_rate', type=int, default=5)
+	parser.add_argument('--tau', type=float, default=1.0e-3)
+
+	parser.add_argument('--type', type=str, default='DQN',
+						choices=['DQN', 'DuDQN'])
+
+	parser.add_argument('--save_Q', action='store_true')
+	parser.add_argument('--load_Q', action='store_true')
+
+	parser.add_argument('--resolution', type=int, default=500)
+	parser.add_argument('--q_file', type=str, default='qnet')
+	parser.add_argument('--map', type=str, default='imgs/islands.png')
+
+	parser.add_argument('--xgoal', type=float, nargs=2, default=[110.0, 90.0])
+	parser.add_argument('--xlim', type=float, nargs=2, default=[0.0, 120.0])
+	parser.add_argument('--ylim', type=float, nargs=2, default=[0.0, 100.0])
+
+	parser.add_argument('--nagents', type=int, default=2)
+
+	return parser.parse_args()
+
+########################################################################
 # Programa principal:
 # 
 # - episodes: número de episódios
@@ -305,25 +336,27 @@ if __name__ == '__main__':
 	
 	plt.ion()
 	
-	# parametros
-	parameters = {'episodes'   : 1000,
-				  'gamma'      : 0.99,
-				  'eps'        : 0.1,
-				  'alpha'      : 1.0e-3,
-				  'batch_size' : 64,
-				  'update_rate': 5,
-				  'tau'		   : 1.0e-3,
-				  'type'       : 'DuDQN', # 'DQN' ou 'DuDQN'
-				  'save_Q'     : True,
-				  'load_Q'     : False,
-				  'resolution': 200,
-				  'q-file'     : 'qnet',
-				  'map'		   : 'imgs/islands.png',
-				  'xgoal'     : np.array([110.0, 90.0]),
-				  'xlim'	  : np.array([0.0, 120.0]),
-				  'ylim'	  : np.array([0.0, 100.0]),
-				  'nagents'	  : 2,	
-				  }
+	args = parse_args()
+
+	parameters = {
+		'episodes'   : args.episodes,
+		'gamma'      : args.gamma,
+		'eps'        : args.eps,
+		'alpha'      : args.alpha,
+		'batch_size' : args.batch_size,
+		'update_rate': args.update_rate,
+		'tau'        : args.tau,
+		'type'       : args.type,
+		'save_Q'     : args.save_Q,
+		'load_Q'     : args.load_Q,
+		'resolution' : args.resolution,
+		'q-file'     : args.q_file,
+		'map'        : args.map,
+		'xgoal'      : np.array(args.xgoal),
+		'xlim'       : np.array(args.xlim),
+		'ylim'       : np.array(args.ylim),
+		'nagents'    : args.nagents,
+	}
 	
 	dqn = [DQN(parameters) for _ in range(parameters['nagents'])]
 	

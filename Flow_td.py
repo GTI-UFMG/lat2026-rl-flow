@@ -12,6 +12,7 @@ from functools import partial
 import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use("TkAgg")
+import argparse
 
 MEAN_REWARDS = 200
 plt.rcParams['figure.figsize'] = (16,8)
@@ -211,6 +212,28 @@ class TDlearning(object):
 		self.avg_rewards.append(np.mean(self.rewards[-MEAN_REWARDS:]))
 
 ########################################################################
+def parse_args():
+	parser = argparse.ArgumentParser()
+
+	parser.add_argument('--episodes', type=int, default=20000)
+	parser.add_argument('--gamma', type=float, default=0.99)
+	parser.add_argument('--eps', type=float, default=0.1)
+	parser.add_argument('--alpha', type=float, default=0.5)
+	parser.add_argument('--method', type=str, default='Sarsa',
+						choices=['Sarsa', 'Qlearning'])
+	parser.add_argument('--save_Q', action='store_true')
+	parser.add_argument('--load_Q', action='store_true')
+	parser.add_argument('--q_file', type=str, default='qtable')
+	parser.add_argument('--map', type=str, default='imgs/islands.png')
+	parser.add_argument('--xgoal', type=float, nargs=2, default=[110.0, 90.0])
+	parser.add_argument('--nagents', type=int, default=2)
+	parser.add_argument('--xlim', type=float, nargs=2, default=[0.0, 120.0])
+	parser.add_argument('--ylim', type=float, nargs=2, default=[0.0, 100.0])
+	parser.add_argument('--resolution', type=int, default=500)
+
+	return parser.parse_args()
+
+########################################################################
 # Código principal:
 # - episodes: número de episódios
 # - gamma: fator de desconto
@@ -224,22 +247,25 @@ if __name__ == '__main__':
 	
 	plt.ion()
 	
+	args = parse_args()
+
 	# parametros
-	parameters = {'episodes'  : 20000,
-				  'gamma'     : 0.99,
-				  'eps'       : 0.1,
-				  'alpha'     : 0.5,
-				  'method'    : 'Sarsa', #'Sarsa' ou 'Qlearning'
-				  'save_Q'    : True,
-				  'load_Q'    : False,
-				  'q-file'    : 'qtable',
-				  'map'		  : 'imgs/islands.png',
-				  'xgoal'     : np.array([110.0, 90.0]),
-				  'nagents'	  : 2,
-				  'xlim'	  : np.array([0.0, 120.0]),
-				  'ylim'	  : np.array([0.0, 100.0]),
-				  'resolution': 500,
-				  }
+	parameters = {
+		'episodes': args.episodes,
+		'gamma': args.gamma,
+		'eps': args.eps,
+		'alpha': args.alpha,
+		'method': args.method,
+		'save_Q': args.save_Q,
+		'load_Q': args.load_Q,
+		'q-file': args.q_file,
+		'map': args.map,
+		'xgoal': np.array(args.xgoal),
+		'nagents': args.nagents,
+		'xlim': np.array(args.xlim),
+		'ylim': np.array(args.ylim),
+		'resolution': args.resolution
+	}
 
 	# TD algorithm
 	td = [TDlearning(parameters) for _ in range(parameters['nagents'])]
