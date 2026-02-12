@@ -15,3 +15,13 @@ Implementation for the Energy-efficient Navigation in Unknown Static Flow Fields
 <p align="center">
   <img height="300px" src="./screenshots/result.jpg">
 </p>
+
+## Installing
+
+To run the project, first create a virtual environment and install the required libraries:
+
+```console
+$ python3 -m venv venv
+$ source venv/bin/activate
+$ pip install -r requirements.txt
+```
