@@ -29,9 +29,8 @@ The project includes:
 
 ##
 # Main Scripts
-
--   `Flow_td.py` → Sarsa and Q-learning (tabular methods)\
--   `Flow_dqn.py` → DQN and Dueling DQN (deep neural networks)
+- `Flow_td.py` → Sarsa and Q-learning (tabular methods)\
+- `Flow_dqn.py` → DQN and Dueling DQN (deep neural networks)
 
 ##
 ## Installing
@@ -93,20 +92,20 @@ python Flow_td.py --method Qlearning --episodes 10000 --eps 0.05 --save_Q
 
   Parameter        Description                   Default
   ---------------- ----------------------------- ------------------
-  `--episodes`     Number of training episodes   20000
-  `--gamma`        Discount factor               0.99
-  `--eps`          Epsilon for ε-greedy policy   0.1
-  `--alpha`        Learning rate                 0.5
-  `--method`       `Sarsa` or `Qlearning`        Sarsa
-  `--save_Q`       Save Q-table                  False
-  `--load_Q`       Load Q-table                  False
-  `--q_file`       Base filename for Q-table     qtable
-  `--map`          Path to map image             imgs/islands.png
-  `--xgoal`        Goal position (x y)           110 90
-  `--xlim`         Environment x limits          0 120
-  `--ylim`         Environment y limits          0 100
-  `--nagents`      Number of parallel agents     2
-  `--resolution`   Flow field resolution         500
+  - `--episodes`     Number of training episodes   20000
+  - `--gamma`        Discount factor               0.99
+  - `--eps`          Epsilon for ε-greedy policy   0.1
+  - `--alpha`        Learning rate                 0.5
+  - `--method`       `Sarsa` or `Qlearning`        Sarsa
+  - `--save_Q`       Save Q-table                  False
+  - `--load_Q`       Load Q-table                  False
+  - `--q_file`       Base filename for Q-table     qtable
+  - `--map`          Path to map image             imgs/islands.png
+  - `--xgoal`        Goal position (x y)           110 90
+  - `--xlim`         Environment x limits          0 120
+  - `--ylim`         Environment y limits          0 100
+  - `--nagents`      Number of parallel agents     2
+  - `--resolution`   Flow field resolution         500
 
 ##
 # Running Deep RL (DQN / Dueling DQN)
@@ -125,23 +124,23 @@ python Flow_dqn.py --type DuDQN --episodes 5000 --save_Q
 
   Parameter         Description                          Default
   ----------------- ------------------------------------ ------------------
-  `--episodes`      Number of training episodes          1000
-  `--gamma`         Discount factor                      0.99
-  `--eps`           Epsilon for ε-greedy policy          0.1
-  `--alpha`         Learning rate (Adam)                 1e-3
-  `--batch_size`    Replay buffer batch size             64
-  `--update_rate`   Target update frequency (episodes)   5
-  `--tau`           Soft update factor                   1e-3
-  `--type`          `DQN` or `DuDQN`                     DQN
-  `--save_Q`        Save trained model                   False
-  `--load_Q`        Load trained model                   False
-  `--q_file`        Base filename for model              qnet
-  `--map`           Path to map image                    imgs/islands.png
-  `--xgoal`         Goal position (x y)                  110 90
-  `--xlim`          Environment x limits                 0 120
-  `--ylim`          Environment y limits                 0 100
-  `--nagents`       Number of parallel agents            2
-  `--resolution`    Flow field resolution                500
+  - `--episodes`      Number of training episodes          1000
+  - `--gamma`         Discount factor                      0.99
+  - `--eps`           Epsilon for ε-greedy policy          0.1
+  - `--alpha`         Learning rate (Adam)                 1e-3
+  - `--batch_size`    Replay buffer batch size             64
+  - `--update_rate`   Target update frequency (episodes)   5
+  - `--tau`           Soft update factor                   1e-3
+  - `--type`          `DQN` or `DuDQN`                     DQN
+  - `--save_Q`        Save trained model                   False
+  - `--load_Q`        Load trained model                   False
+  - `--q_file`        Base filename for model              qnet
+  - `--map`           Path to map image                    imgs/islands.png
+  - `--xgoal`         Goal position (x y)                  110 90
+  - `--xlim`          Environment x limits                 0 120
+  - `--ylim`          Environment y limits                 0 100
+  - `--nagents`       Number of parallel agents            2
+  - `--resolution`    Flow field resolution                500
 
 ##
 # Output
