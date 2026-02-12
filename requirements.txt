@@ -1,0 +1,6 @@
+numpy==1.26.4
+matplotlib==3.8.2
+torch==2.2.2
+gymnasium==0.29.1
+opencv-python==4.9.0.80
+progressbar2==4.2.0
