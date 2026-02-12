@@ -5,6 +5,9 @@ Authors:
 - Douglas G. Macharet²
 
 Affiliation:
+
 ¹Department of Electronics Engineering
+
 ²Computer Vision and Robotics Laboratory (VeRLab), Department of Computer Science
+
 Universidade Federal de Minas Gerais, Brazil
