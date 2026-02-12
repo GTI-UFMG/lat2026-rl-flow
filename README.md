@@ -10,14 +10,12 @@ Affiliation:\
 Universidade Federal de Minas Gerais, Brazil
 
 ##
-Implementation for the Energy-efficient Navigation in Unknown Static Flow Fields using Reinforcement Learning
+This repository implements **Reinforcement Learning algorithms** for 2D
+navigation in a flow field environment with obstacles.
 
 <p align="center">
   <img height="300px" src="./screenshots/result.jpg">
 </p>
-
-This repository implements **Reinforcement Learning algorithms** for 2D
-navigation in a flow field environment with obstacles.
 
 The environment simulates an agent navigating toward a goal while
 minimizing exposure to a dynamic flow field and avoiding collisions
