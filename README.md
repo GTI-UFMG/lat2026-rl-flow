@@ -11,3 +11,7 @@ Universidade Federal de Minas Gerais, Brazil
 
 ##
 Implementation for the Energy-efficient Navigation in Unknown Static Flow Fields using Reinforcement Learning
+
+<p align="center">
+  <img height="400px" src="./screenshots/result.jpg">
+</p>
