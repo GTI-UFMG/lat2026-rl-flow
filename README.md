@@ -31,7 +31,7 @@ The project includes:
 - `Flow_dqn.py` → DQN and Dueling DQN (deep neural networks)
 
 ##
-## Installing
+# Installing
 
 ## Create a virtual environment (recommended)
 
