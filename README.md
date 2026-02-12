@@ -22,12 +22,12 @@ minimizing exposure to a dynamic flow field and avoiding collisions
 defined by a binary map image.
 
 The project includes:
-- **Tabular TD methods**: Sarsa and Q-learning\
+- **Tabular TD methods**: Sarsa and Q-learning
 - **Deep RL methods**: DQN and Dueling DQN
 
 ##
 # Main Scripts
-- `Flow_td.py` → Sarsa and Q-learning (tabular methods)\
+- `Flow_td.py` → Sarsa and Q-learning (tabular methods)
 - `Flow_dqn.py` → DQN and Dueling DQN (deep neural networks)
 
 ##
