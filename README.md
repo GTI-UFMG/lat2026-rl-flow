@@ -4,6 +4,8 @@ Authors:
 * Victor C. da S. Campos¹
 * Douglas G. Macharet²
 
+Submission ID: 10321
+
 Affiliation:\
 ¹Department of Electronics Engineering\
 ²Computer Vision and Robotics Laboratory (VeRLab), Department of Computer Science\
